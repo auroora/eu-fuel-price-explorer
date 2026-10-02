@@ -55,6 +55,13 @@ jobs:
           dbt build
 
 
+      - name: Invalidate Next.js cache
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.REVALIDATION_SECRET }}" \
+            https://eu-fuel-price-explorer-blond.vercel.app/api/revalidate-fuel
+
+
 
 
 

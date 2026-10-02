@@ -1,7 +1,13 @@
 import pool from "@/lib/db";
+import { cacheLife, cacheTag } from "next/cache";
+
 
 
 export async function getLatestFuelPrices() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT
       country,
@@ -20,6 +26,10 @@ export async function getLatestFuelPrices() {
 }
 
 export async function getCheapestPetrol() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT
       country,
@@ -40,6 +50,10 @@ export async function getCheapestPetrol() {
 };
 
 export async function getPriciestPetrol() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT
       country,
@@ -60,6 +74,10 @@ export async function getPriciestPetrol() {
 };
 
 export async function getCheapestDiesel() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT
       country,
@@ -80,6 +98,10 @@ export async function getCheapestDiesel() {
 };
 
 export async function getPriciestDiesel() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT
       country,
@@ -101,6 +123,10 @@ export async function getPriciestDiesel() {
 
 
 export async function getLatestObservedDate() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("fuel-prices");
+
   const result = await pool.query(`
     SELECT MAX(observed_date) AS latest_date
     FROM analytics.fact_weekly_fuel_prices;
