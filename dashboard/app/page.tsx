@@ -162,9 +162,19 @@ export default async function Home() {
             {/* Content */}
             <div className=" w-full flex flex-col justify-center gap-20 pt-30 md:py-30 md:px-8 lg:px-0 items-center relative z-20">
               <h2 className="font-serif text-[56px] leading-[100%] md:text-7xl lg:text-8xl md:max-w-4xl text-center text-background px-4">
-                The <span className="italic">highest</span> fuel prices were found in {priciestPetrol.country} and {priciestDiesel.country}.
+                {priciestPetrol.country === priciestDiesel.country ? (
+                  <>
+                    The <span className="italic">highest</span> fuel prices were found in{" "}
+                    {priciestPetrol.country}.
+                  </>
+                ) : (
+                  <>
+                    The <span className="italic">highest</span> fuel prices were found in{" "}
+                    {priciestPetrol.country} and {priciestDiesel.country}.
+                  </>
+                )}
               </h2>
-
+              
               {/* Most expensive (mobile) */}
               <div className="relative md:hidden z-30 w-full border-b border-black">
                 <TabPanel  tabs={[
